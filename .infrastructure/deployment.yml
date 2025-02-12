@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: todoapp
-        image: konstant1nou77/todoapp:3.1.5
+        image: konstant1nou77/todoapp:3.1.6
         imagePullPolicy: Always
         volumeMounts:
         - name: data
@@ -48,6 +48,26 @@ spec:
             secretKeyRef:
               name: app-secret
               key: SECRET_KEY
+        - name: DB_NAME
+          valueFrom:
+            secretKeyRef:
+              name: app-secret
+              key: NAME
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: app-secret
+              key: USER
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: app-secret
+              key: PASSWORD
+        - name: DB_HOST
+          valueFrom:
+            secretKeyRef:
+              name: app-secret
+              key: HOST
         ports:
         - containerPort: 8080
         livenessProbe:
@@ -72,3 +92,4 @@ spec:
       - name: app-config-volume
         configMap:
           name: app-config
+          

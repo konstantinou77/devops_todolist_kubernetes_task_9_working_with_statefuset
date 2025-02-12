@@ -9,3 +9,4 @@ data:
     CREATE USER 'todoappuser'@'%' IDENTIFIED BY '';
     GRANT ALL PRIVILEGES ON tododb.* TO 'todoappuser'@'%';
     FLUSH PRIVILEGES;
+    
